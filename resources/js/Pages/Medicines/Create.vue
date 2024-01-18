@@ -74,7 +74,7 @@ const submitForm = () => {
      
 <template>
     <AppLayout>
-        <template>
+        <template #header>
             <h1 class="fond-semibold text-xl text-gray-800 leading-tight">Crear Medicamento</h1>
         </template>
 

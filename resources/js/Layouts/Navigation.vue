@@ -7,7 +7,7 @@
         <div class="flex justify-center items-center mt-8">
             <div class="flex items-center">
                 <img
-                src="favicon.ico"
+                src="/./favicon.ico"
                 width="50" />
 
                 <span class="mx-2 text-2xl font-semibold text-white">Nemesis S.A.S</span>
