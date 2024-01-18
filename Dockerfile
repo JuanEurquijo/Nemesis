@@ -29,6 +29,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install --no-dev --working-dir=/var/www/html
 
 # Run Laravel migrations
+RUN php artisan config:clear
 RUN php artisan migrate --force
 
 # Install NPM dependencies
