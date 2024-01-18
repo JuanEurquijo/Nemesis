@@ -22,13 +22,20 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN apk update
 
-# Install the `npm` package
-RUN apk add --no-cache npm
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install NPM dependencies
+RUN apk add --no-cache npm
 RUN npm install
 
 # Build Vite assets
 RUN npm run build
+
+# Run Composer install
+RUN composer install --no-dev --working-dir=/var/www/html
+
+# Run Laravel migrations
+RUN php artisan migrate --force
 
 CMD ["/start.sh"]
