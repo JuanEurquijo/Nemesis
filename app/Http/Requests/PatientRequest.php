@@ -26,7 +26,7 @@ class PatientRequest extends FormRequest
             'lastname' => 'required|max:50',
             'identification' => 'required|numeric',
             'phone' => 'required|numeric',
-            'age' => 'required|numeric',
+            'birthdate' => 'required|date',
             'sex' => 'required',
         ];
     }

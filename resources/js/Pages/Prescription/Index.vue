@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed } from 'vue'; 
+import { ref, computed } from 'vue';
 import {Head, useForm } from '@inertiajs/vue3';
 import PatientInfoForm from '@/Components/Prescription/PatientInfo.vue'
 import Prescription from '@/Components/Prescription/Prescription.vue'
@@ -55,7 +55,7 @@ const handleDoseFound = (dose) => {
 
 const calculateDosage = () => {
     const dailyDose = form.weight * form.dosage
-    const dosePerDay = dailyDose / form.frecuency 
+    const dosePerDay = dailyDose / form.frecuency
     console.log('Peso: '+form.weight)
     console.log('Dosis: '+doseF.value)
     console.log('Frecuencia: '+form.frecuency)
@@ -77,7 +77,7 @@ const prescriptionForm = computed(() => {
 
         <div class="sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Aquí puede realizar la creación de una nueva receta médica</p>
+                <p class="mt-1 text-sm text-gray-500">Aquí puede realizar la creación de una nueva receta médica</p>
             </div>
         </div>
 

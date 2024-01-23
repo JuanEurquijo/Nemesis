@@ -61,7 +61,7 @@
                 Pacientes
             </nav-link>
 
-            <nav-link :href="route('prescription.index')" :active="route().current('prescription.index')">
+            <nav-link :href="route('catalog.index')" :active="route().current('catalog.index')">
                 <template #icon>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +82,7 @@
                 </template>
                 Contacto
             </nav-link>
-            
+
 
             <!-- <a class="flex items-center mt-4 py-2 px-6 text-gray-100" href="#" @click="showingTwoLevelMenu = !showingTwoLevelMenu">
                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

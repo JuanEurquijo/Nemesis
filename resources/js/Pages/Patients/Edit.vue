@@ -8,6 +8,7 @@ export default {
 import { useForm } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import PatientForm from '@/Components/Patients/Form.vue';
+import { format } from 'date-fns';
 const props = defineProps({
     patient:{
         type: Object,
@@ -20,13 +21,31 @@ const form = useForm({
     lastname: props.patient.lastname,
     identification: String(props.patient.identification),
     phone: String(props.patient.phone),
-    age: String(props.patient.age),
+    birthdate: adjustToLocalTimeZone(props.patient.birthdate),
     sex: props.patient.sex
 })
 
+function adjustToLocalTimeZone(dateString) {
+    const date = new Date(`${dateString}T00:00:00`);
+    date.setMinutes(date.getTimezoneOffset());
+    return date;
+}
+
+const submitForm = () => {
+    if (form.birthdate) {
+        form.birthdate = format(form.birthdate, 'yyyy-MM-dd');
+    }
+    form.put(route('patients.update', props.patient.id), {
+        onError: (errors) => {
+            console.error(errors);
+        },
+    });
+
+};
+
 </script>
 
-     
+
 <template>
     <AppLayout>
         <template>
@@ -39,7 +58,7 @@ const form = useForm({
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                       <PatientForm :updating="true" :form="form" @submit="form.put(route('patients.update', patient.id))" />
+                       <PatientForm :updating="true" :form="form" @submit="submitForm" />
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\CatalogController;
 
 Route::get('/', [DashboardController::class, 'index']);
 
@@ -13,6 +14,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified',]
     Route::resource('/medicines', MedicineController::class);
     Route::resource('/prescription', PrescriptionController::class);
     Route::resource('/patients', PatientController::class);
+    Route::resource('/catalog', CatalogController::class);
     Route::get('/prescription/search/{identification}', [PrescriptionController::class, 'searchPatient'])->name('prescription.searchPatient');
     Route::get('/prescription/activeIngredient/{categoryId}', [PrescriptionController::class, 'searchActiveIngredient'])->name('prescription.searchActiveIngredient');
     Route::get('/prescription/pharmaceuticalForm/{activeIngredient}', [PrescriptionController::class, 'searchPharmaceuticalForm'])->name('prescription.searchPharmaceuticalForm');

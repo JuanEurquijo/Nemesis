@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('lastname',50);
             $table->bigInteger('identification');
             $table->bigInteger('phone')->nullable();
-            $table->bigInteger('age')->nullable();
+            $table->date('birthdate')->nullable();
             $table->string('sex',15)->nullable();
             $table->timestamps();
 

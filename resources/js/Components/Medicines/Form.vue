@@ -123,10 +123,10 @@ function updateTab(tab) {
             <div class="col-span-6 sm:col-span-6">
                 <div class="overflow-x-auto">
                     <ul
-                        class="flex text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                        class="flex text-sm font-medium text-center text-gray-500 border-b border-gray-200">
                         <li v-for="tab in formTabs" :key="tab.key" class="me-2">
                             <a href="#" :class="{
-                                'text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500':
+                                'text-blue-600 bg-gray-100 rounded-t-lg active':
                                     currentTabData.key === tab.key,
                             }" class="inline-block p-4" @click="updateTab(tab)">
                                 {{ tab.label }}

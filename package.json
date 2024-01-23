@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.11.1",
+        "@vuepic/vue-datepicker": "^7.4.1",
         "vue3-html2pdf": "^1.1.2"
     }
 }

@@ -10,6 +10,9 @@ import InputError from '@/Components/InputError.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TextInput from '@/Components/TextInput.vue'
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+
 
 defineProps({
     form: {
@@ -63,16 +66,15 @@ const sexs = ['Masculino','Femenino'];
 
             <div class="col-span-6 sm:col-span-6">
                 <InputLabel for="phone" value="Celular" />
-                <TextInput id="phone" v-model="form.phone" type="number" autocomplete="phone" 
+                <TextInput id="phone" v-model="form.phone" type="number" autocomplete="phone"
                     class="mt-1 block w-full" />
                 <InputError :message="$page.props.errors.phone" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-                <InputLabel for="age" value="Edad" />
-                <TextInput id="age" v-model="form.age" type="number" autocomplete="age"  
-                    class="mt-1 block w-full" />
-                <InputError :message="$page.props.errors.age" class="mt-2" />
+                <InputLabel for="age" value="Fecha de Nacimiento" />
+                <VueDatePicker v-model="form.birthdate" :teleport="true" :enableTimePicker="false"></VueDatePicker>
+                <InputError :message="$page.props.errors.birthdate" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-6">

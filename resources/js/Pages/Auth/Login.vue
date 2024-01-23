@@ -43,7 +43,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Correo Electrónico" />
+                <InputLabel for="email" value="Correo Electrónico" class="mt-5" />
                 <TextInput
                     id="email"
                     v-model="form.email"
@@ -80,6 +80,11 @@ const submit = () => {
                 <!-- <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     ¿Olvidaste tu contraseña?
                 </Link> -->
+
+                <Link :href="route('register')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Regístrate
+                </Link>
+
 
                 <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Acceder
