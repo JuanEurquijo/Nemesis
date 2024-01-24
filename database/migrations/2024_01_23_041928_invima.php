@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $sql = file_get_contents('database\sql\invima.sql');
+        $sql = file_get_contents('database/sql/invima.sql');
         DB::unprepared($sql);
     }
 
