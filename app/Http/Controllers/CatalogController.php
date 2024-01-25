@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Catalog;
+use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
@@ -12,9 +12,25 @@ class CatalogController extends Controller
      */
     public function index()
     {
-
-        $standards  = Catalog::paginate(10);
+        $standards = Catalog::paginate(10);
         return inertia('Catalog/Index', ['standards' => $standards]);
+    }
+
+    public function search(string $query)
+    {
+        $standardsQuery = Catalog::query();
+
+        if ($query) {
+            $standardsQuery->where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('atc', 'like', "%$query%")
+                    ->orWhere('principio_activo', 'like', "%$query%")
+                    ->orWhere('forma_farmaceutica', 'like', "%$query%")
+                    ->orWhere('concentracion', 'like', "%$query%");
+            });
+        }
+
+        $standards = $standardsQuery->paginate(10);
+        return response()->json(['standards' => $standards]);
     }
 
     /**

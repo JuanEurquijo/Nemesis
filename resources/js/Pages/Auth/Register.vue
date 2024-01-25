@@ -8,6 +8,13 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
+defineProps({
+    specialties:{
+        type: Object,
+        required: true
+    }
+})
+
 const form = useForm({
     name: '',
     lastname: '',
@@ -66,15 +73,9 @@ const submit = () => {
 
             <div class="mt-4">
                 <InputLabel for="specialty" value="Especialidad" />
-                <TextInput
-                    id="specialty"
-                    v-model="form.specialty"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="specialty"
-                />
+                <select id="specialty" class="mt-1 block w-full rounded-md border-slate-300" v-model="form.specialty">
+                    <option v-for="specialty in specialties" :key="specialty.id"> {{ specialty.name }}</option>
+                </select>
                 <InputError class="mt-2" :message="form.errors.specialty" />
             </div>
 
@@ -83,7 +84,7 @@ const submit = () => {
                 <TextInput
                     id="phone"
                     v-model="form.phone"
-                    type="text"
+                    type="number"
                     class="mt-1 block w-full"
                     required
                     autofocus

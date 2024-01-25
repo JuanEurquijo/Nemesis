@@ -18,7 +18,7 @@ const form = useForm({
     name: props.user.name,
     lastname: props.user.lastname,
     specialty: props.user.specialty,
-    phone: props.user.phone,
+    phone: String(props.user.phone),
     medical_registry: props.user.medical_registry,
     email: props.user.email,
     photo: null,
@@ -194,7 +194,7 @@ const clearPhotoFileInput = () => {
                 <TextInput
                     id="phone"
                     v-model="form.phone"
-                    type="text"
+                    type="number"
                     class="mt-1 block w-full"
                     required
                     autocomplete="phone"
