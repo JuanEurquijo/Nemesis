@@ -6,6 +6,9 @@ php artisan config:cache
 echo "Caching routes..."
 php artisan route:cache
 
-echo "Running migrations..."
+echo "Reseting migrations..."
 php artisan migrate:reset --force
-php artisan migrate:refresh --seed --force
+
+echo "Running migrations..."
+php artisan migrate --force
+php artisan db:seed --force
