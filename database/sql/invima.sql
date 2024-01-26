@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS specialties;
 DROP TABLE IF EXISTS invima;
 CREATE TABLE invima (atc VARCHAR(200),principio_activo VARCHAR(300),forma_farmaceutica VARCHAR(300),concentracion VARCHAR(300));
 INSERT INTO invima (atc, principio_activo, forma_farmaceutica, concentracion) VALUES
