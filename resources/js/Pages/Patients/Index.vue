@@ -148,13 +148,13 @@ const filteredPatients = computed(() => {
                 </svg>
 
                 <span>
-                    previous
+                    Anterior
                 </span>
             </a>
 
             <a v-if="patients.current_page < patients.last_page" :href="patients.next_page_url" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 hover:bg-gray-100">
                 <span>
-                    Next
+                    Siguiente
                 </span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
