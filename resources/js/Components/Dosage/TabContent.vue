@@ -21,27 +21,27 @@ const form = ref(modelValue);
     </div>
 
     <div v-if="isChecked" class="col-span-6 sm:col-span-6">
-        <InputLabel for="unica" value="Dosis Única (mg/kg)" />
-        <TextInput id="unica" v-model="form.dosages[tabIndex].unique_dose" type="text" autocomplete="unica" class="mt-1 block w-full" />
-        <InputError :message="$page.props.errors.unica" class="mt-2" />
+        <InputLabel for="unique" value="Dosis Única (mg/kg)" />
+        <TextInput id="unique" v-model="form.dosages[tabIndex].unique_dose" type="text" autocomplete="unique" class="mt-1 block w-full" />
+        <InputError :message="$page.props.errors.unique_dose" class="mt-2" />
     </div>
 
     <div v-if="!isChecked" class="col-span-6 sm:col-span-6">
-        <InputLabel for="promedio" value="Dosis Promedio (mg/kg)" />
-        <TextInput id="promedio" v-model="form.dosages[tabIndex].average_dose" type="text" autocomplete="promedio" class="mt-1 block w-full" />
-        <InputError :message="$page.props.errors.promedio" class="mt-2" />
+        <InputLabel for="average" value="Dosis Promedio (mg/kg)" />
+        <TextInput id="average" v-model="form.dosages[tabIndex].average_dose" type="text" autocomplete="average" class="mt-1 block w-full" />
+        <InputError :message="$page.props.errors.average_dose" class="mt-2" />
     </div>
 
     <div v-if="!isChecked" class="col-span-6 sm:col-span-6 mt-2">
-        <InputLabel for="minima" value="Dosis Mínima (mg/kg)" />
-        <TextInput id="minima" v-model="form.dosages[tabIndex].minimum_dose" type="text" autocomplete="minima" class="mt-1 block w-full" />
-        <InputError :message="$page.props.errors.minima" class="mt-2" />
+        <InputLabel for="minimum" value="Dosis Mínima (mg/kg)" />
+        <TextInput id="minimum" v-model="form.dosages[tabIndex].minimum_dose" type="text" autocomplete="minimum" class="mt-1 block w-full" />
+        <InputError :message="$page.props.errors.minimum_dose" class="mt-2" />
     </div>
 
     <div v-if="!isChecked" class="col-span-6 sm:col-span-6 mt-2">
-        <InputLabel for="maxima" value="Dosis Máxima (mg/kg)" />
-        <TextInput id="maxima" v-model="form.dosages[tabIndex].maximum_dose" type="text" autocomplete="maxima" class="mt-1 block w-full" />
-        <InputError :message="$page.props.errors.maxima" class="mt-2" />
+        <InputLabel for="maximum" value="Dosis Máxima (mg/kg)" />
+        <TextInput id="maximum" v-model="form.dosages[tabIndex].maximum_dose" type="text" autocomplete="maximum" class="mt-1 block w-full" />
+        <InputError :message="$page.props.errors.maximum" class="mt-2" />
     </div>
 </template>
 

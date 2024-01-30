@@ -51,14 +51,14 @@ const filteredPatients = computed(() => {
 
         <div class="sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="mt-1 text-sm text-gray-500 ">Aquí puede gestionar toda la información de sus pacientes</p>
+                <p class="mt-1 text-sm text-gray-700 ">Aquí puede gestionar toda la información de sus pacientes</p>
             </div>
 
             <div class="flex items-center mt-4 gap-x-3">
 
                 <Link
                   :href="route('patients.create')"
-                    class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600">
+                    class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-gray-800 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-gray-800">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -137,7 +137,7 @@ const filteredPatients = computed(() => {
             </table>
         </div>
         <div class="mt-6 sm:flex sm:items-center sm:justify-between ">
-        <div class="text-sm text-gray-500">
+        <div class="text-sm text-gray-700">
             Página <span class="font-medium text-gray-700">{{ patients.current_page }} de {{ patients.last_page }}</span>
         </div>
 

@@ -35,7 +35,7 @@ const year = new Date().getFullYear()
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="mt-5">
                 <div class="flex justify-center">
-                    <Link :href="'/'">
+                    <Link :href="'/'" aria-label="Ir a la página de inicio">
                     <img src="images/logo.png" alt="" width="100px" />
                     </Link>
                 </div>

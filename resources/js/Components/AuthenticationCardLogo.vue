@@ -5,7 +5,7 @@ import { Link } from '@inertiajs/vue3';
 <template>
       <div class="mt-5 bg-white/50 rounded-full p-12">
       <div class="flex justify-center">
-                <Link :href="'/'">
+                <Link :href="'/'" aria-label="Ir a la página de inicio">
                 <img src="images/logo.png" alt="" width="100px" />
                 </Link>
             </div>

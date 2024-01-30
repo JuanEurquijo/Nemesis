@@ -72,7 +72,7 @@ const sexs = ['Masculino','Femenino'];
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-                <InputLabel for="age" value="Fecha de Nacimiento" />
+                <InputLabel value="Fecha de Nacimiento" />
                 <VueDatePicker v-model="form.birthdate" :teleport="true" :enableTimePicker="false"></VueDatePicker>
                 <InputError :message="$page.props.errors.birthdate" class="mt-2" />
             </div>

@@ -23,7 +23,7 @@ const props = defineProps({
         required: false
     }
 })
-defineEmits(['submit','foundDose','medicine'])
+defineEmits(['submit', 'foundDose', 'medicine'])
 const { emit } = getCurrentInstance();
 
 const activeIngredients = ref([]);
@@ -135,7 +135,7 @@ async function searchDosage() {
                 dosage: dosage
             };
         });
-        console.log('dosageSearch'+dosageSearch.value)
+        console.log('dosageSearch' + dosageSearch.value)
         const response = await axios.post(route('prescription.searchDosage', dosageSearch.value));
         emit('foundDose', response.data.dosage);
         emit('medicine', medicine);
@@ -144,7 +144,7 @@ async function searchDosage() {
     }
 };
 
-watch(() => props.form.dosage, ()=>{
+watch(() => props.form.dosage, () => {
     searchDosage();
 })
 
@@ -168,8 +168,8 @@ watch(() => props.form.dosage, ()=>{
             </div>
 
             <div class="sm:col-span-1">
-                <InputLabel for="active_ingredientF" value="Principio Activo" />
-                <select id="active_ingredientF" v-model="props.form.active_ingredient" @change="loadPharmaceuticalForms"
+                <InputLabel for="active_ingredient" value="Principio Activo" />
+                <select id="active_ingredient" v-model="props.form.active_ingredient" @change="loadPharmaceuticalForms"
                     class="mt-1 block w-full rounded-md border-slate-300">
                     <option v-for="active_ingredient in activeIngredients" :key="active_ingredient.id"> {{ active_ingredient
                     }}</option>
@@ -178,8 +178,8 @@ watch(() => props.form.dosage, ()=>{
             </div>
 
             <div class="sm:col-span-1">
-                <InputLabel for="pharmaceutical_formF" value="Forma Farmacéutica" />
-                <select id="pharmaceutical_formF" v-model="props.form.pharmaceutical_form" @change="loadConcentrations"
+                <InputLabel for="pharmaceutical_form" value="Forma Farmacéutica" />
+                <select id="pharmaceutical_form" v-model="props.form.pharmaceutical_form" @change="loadConcentrations"
                     class="mt-1 block w-full rounded-md border-slate-300">
                     <option v-for="pharmaceutical_form in pharmaceuticalForms" :key="pharmaceutical_form.id"> {{
                         pharmaceutical_form }}</option>
@@ -188,8 +188,8 @@ watch(() => props.form.dosage, ()=>{
             </div>
 
             <div class="sm:col-span-1">
-                <InputLabel for="concentrationF" value="Concentración" />
-                <select id="concentrationF" v-model="props.form.concentration"
+                <InputLabel for="concentration" value="Concentración" />
+                <select id="concentration" v-model="props.form.concentration"
                     class="mt-1 block w-full rounded-md border-slate-300">
                     <option v-for="concentration in concentrations" :key="concentration.id"> {{ concentration }}</option>
                 </select>

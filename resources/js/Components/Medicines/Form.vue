@@ -81,15 +81,15 @@ function updateTab(tab) {
 
         <template #form>
             <div class="col-span-6 sm:col-span-6">
-                <InputLabel for="principio" value="Principio Activo" />
-                <TextInput id="principio" v-model="form.active_ingredient" type="text" autocomplete="principio"
+                <InputLabel for="ingredient" value="Principio Activo" />
+                <TextInput id="ingredient" v-model="form.active_ingredient" type="text" autocomplete="ingredient"
                     class="mt-1 block w-full" />
                 <InputError :message="$page.props.errors.active_ingredient" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-                <InputLabel for="forma" value="Forma Farmacéutica" />
-                <select id="forma" class="mt-1 block w-full rounded-md border-slate-300" v-model="form.pharmaceutical_form">
+                <InputLabel for="presentation" value="Forma Farmacéutica" />
+                <select id="presentation" class="mt-1 block w-full rounded-md border-slate-300" v-model="form.pharmaceutical_form">
                     <option v-for="p in presentations" :key="p.id" :selected="p.name === form.pharmaceutical_form"> {{ p.name
                     }}</option>
                 </select>
@@ -98,7 +98,7 @@ function updateTab(tab) {
 
             <div class="col-span-6 sm:col-span-6">
                 <InputLabel for="concentration" value="Concentración" />
-                <TextInput id="concentration" v-model="form.concentration" type="text" autocomplete="concentracion"
+                <TextInput id="concentration" v-model="form.concentration" type="text" autocomplete="concentration"
                     class="mt-1 block w-full"
                      />
                 <InputError :message="$page.props.errors.concentration" class="mt-2" />
@@ -114,7 +114,7 @@ function updateTab(tab) {
             </div>
 
             <div class="col-span-6 sm:col-span-6">
-                <InputLabel value="Dosificación" />
+                <h3 class="font-bold">Dosificación</h3>
                 <p class="mt-2 font-medium text-sm text-gray-700">A continuación indique las diferentes dosificaciones para
                     el medicamento de acuerdo al tipo de paciente:</p>
             </div>

@@ -8,7 +8,7 @@
 
         <div class="sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="mt-1 text-sm text-gray-500">Aquí puede encontrar las normas farmacológicas proporcionada por el
+                <p class="mt-1 text-sm text-gray-700">Aquí puede encontrar las normas farmacológicas proporcionada por el
                     Invima hasta el 2023</p>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 </div>
 
                 <button type="submit" @click="performSearch" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white
-                     uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                     uppercase tracking-widest hover:bg-gray-800 focus:bg-gray-800 active:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 
                      focus:ring-offset-2 transition ease-in-out duration-150">
                     Buscar
                 </button>
@@ -65,7 +65,7 @@
             </table>
         </div>
         <div class="mt-6 sm:flex sm:items-center sm:justify-between">
-            <div class="text-sm text-gray-500">
+            <div class="text-sm text-gray-700">
                 Página <span class="font-medium text-gray-700">{{ standards.current_page }} de {{ standards.last_page
                 }}</span>
             </div>

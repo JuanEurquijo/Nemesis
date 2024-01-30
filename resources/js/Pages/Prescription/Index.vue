@@ -77,7 +77,7 @@ const prescriptionForm = computed(() => {
 
         <div class="sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="mt-1 text-sm text-gray-500">Aquí puede realizar la creación de una nueva receta médica</p>
+                <p class="mt-1 text-sm text-gray-700">Aquí puede realizar la creación de una nueva receta médica</p>
             </div>
         </div>
 
