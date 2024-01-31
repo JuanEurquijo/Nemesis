@@ -11,9 +11,9 @@ import InputLabel from '@/Components/InputLabel.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TextInput from '@/Components/TextInput.vue'
 import TabContent from '@/Components/Dosage/TabContent.vue'
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
-defineProps({
+const props = defineProps({
     form: {
         type: Object,
         required: true
@@ -58,14 +58,25 @@ const formTabs = [
     },
 ];
 
+const units = ['mg','g','dag','g/L','mg/L','mg/ml'];
 
+const unit = ref('');
 const currentTabData = ref(formTabs[0]);
 const tabIndex = ref(0);
+const concentrationValue = ref('');
+
+const combineConcentration = (value) => {
+    props.form.concentration = value + ' ' + unit.value;
+};
 
 function updateTab(tab) {
     currentTabData.value = tab;
     tabIndex.value = formTabs.findIndex(item => item.key === tab.key);
 }
+
+watchEffect(() => {
+    combineConcentration(concentrationValue.value);
+});
 
 </script>
 
@@ -89,8 +100,10 @@ function updateTab(tab) {
 
             <div class="col-span-6 sm:col-span-6">
                 <InputLabel for="presentation" value="Forma Farmacéutica" />
-                <select id="presentation" class="mt-1 block w-full rounded-md border-slate-300" v-model="form.pharmaceutical_form">
-                    <option v-for="p in presentations" :key="p.id" :selected="p.name === form.pharmaceutical_form"> {{ p.name
+                <select id="presentation" class="mt-1 block w-full rounded-md border-slate-300"
+                    v-model="form.pharmaceutical_form">
+                    <option v-for="p in presentations" :key="p.id" :selected="p.name === form.pharmaceutical_form"> {{
+                        p.name
                     }}</option>
                 </select>
                 <InputError :message="$page.props.errors.pharmaceutical_form" class="mt-2" />
@@ -98,9 +111,14 @@ function updateTab(tab) {
 
             <div class="col-span-6 sm:col-span-6">
                 <InputLabel for="concentration" value="Concentración" />
-                <TextInput id="concentration" v-model="form.concentration" type="text" autocomplete="concentration"
-                    class="mt-1 block w-full"
-                     />
+                <div class="flex">
+                    <TextInput id="concentration" v-model="concentrationValue" type="number" autocomplete="concentration"
+                        class="mt-1 block w-full" />
+                    <select id="unit" class="mt-1 block rounded-md border-slate-300 w-26" v-model="unit">
+                        <option v-for="unit in units" :key="unit.id" :value="unit"
+                            :selected="unit"> {{ unit }}</option>
+                    </select>
+                </div>
                 <InputError :message="$page.props.errors.concentration" class="mt-2" />
             </div>
 
@@ -122,8 +140,7 @@ function updateTab(tab) {
 
             <div class="col-span-6 sm:col-span-6">
                 <div class="overflow-x-auto">
-                    <ul
-                        class="flex text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+                    <ul class="flex text-sm font-medium text-center text-gray-500 border-b border-gray-200">
                         <li v-for="tab in formTabs" :key="tab.key" class="me-2">
                             <a href="#" :class="{
                                 'text-blue-600 bg-gray-100 rounded-t-lg active':

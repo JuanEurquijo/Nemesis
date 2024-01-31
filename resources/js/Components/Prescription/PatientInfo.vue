@@ -46,7 +46,7 @@ const submitForm = async () => {
             </div>
 
             <div class="sm:mt-4 flex flex-col items-center gap-y-3 sm:flex-row sm:justify-between sm:text-center">
-                <button type="submit" @click="submitForm" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                <button type="submit" @click="submitForm" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md text-sm tracking-wide text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 shrink-0">
                   Buscar Paciente
                 </button>
             </div>

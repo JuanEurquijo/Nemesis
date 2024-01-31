@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm, Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import MedicineForm from '@/Components/Medicines/Form.vue';
 const form = useForm({
@@ -74,6 +74,7 @@ const submitForm = () => {
      
 <template>
     <AppLayout>
+        <Head title="Crear Medicina" />
         <template #header>
             <h1 class="fond-semibold text-xl text-gray-800 leading-tight">Crear Medicamento</h1>
         </template>

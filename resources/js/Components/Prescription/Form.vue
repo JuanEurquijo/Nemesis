@@ -8,9 +8,8 @@ export default {
 import FormSection from '@/Components/Prescription/FormSection.vue'
 import InputError from '@/Components/InputError.vue'
 import InputLabel from '@/Components/InputLabel.vue'
-import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TextInput from '@/Components/TextInput.vue'
-import { ref, watchEffect, computed, watch, nextTick, getCurrentInstance } from 'vue';
+import { ref, watchEffect, computed, watch, getCurrentInstance } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
@@ -53,7 +52,6 @@ const loadActiveIngredients = async (event) => {
         concentrations.value = [];
 
         const categoryId = event.target.value;
-        await nextTick();
         const response = await axios.get(route('prescription.searchActiveIngredient', categoryId));
         activeIngredients.value = response.data.activeIngredients;
 
@@ -72,7 +70,6 @@ const loadPharmaceuticalForms = async (event) => {
         selectedActiveIngredient = event.target.value;
         medicineForm.value.active_ingredient = selectedActiveIngredient;
 
-        await nextTick();
         const response = await axios.get(route('prescription.searchPharmaceuticalForm', selectedActiveIngredient));
         pharmaceuticalForms.value = response.data.pharmaceuticalForms;
     } catch (error) {
@@ -90,7 +87,6 @@ const loadConcentrations = async (event) => {
             console.error('Error: activeIngredient is not available.');
             return;
         }
-        await nextTick();
         const response = await axios.get(route('prescription.searchConcentration', {
             activeIngredient: selectedActiveIngredient,
             pharmaceuticalForm: pharmaceuticalForm,
@@ -135,7 +131,6 @@ async function searchDosage() {
                 dosage: dosage
             };
         });
-        console.log('dosageSearch' + dosageSearch.value)
         const response = await axios.post(route('prescription.searchDosage', dosageSearch.value));
         emit('foundDose', response.data.dosage);
         emit('medicine', medicine);
@@ -239,9 +234,10 @@ watch(() => props.form.dosage, () => {
         </template>
 
         <template #actions>
-            <PrimaryButton>
-                {{ 'Calcular y agregar' }}
-            </PrimaryButton>
+            <button type="submit" @click="submitForm"
+                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md text-sm tracking-wide text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 shrink-0">
+                Calcular y agregar
+            </button>
         </template>
     </FormSection>
 </template>

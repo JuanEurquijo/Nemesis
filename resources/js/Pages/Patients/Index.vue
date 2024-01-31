@@ -5,39 +5,39 @@ export default {
 </script>
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { Head, Link} from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { computed, ref } from 'vue'
 const props = defineProps({
-  patients: {
-    type: Object,
-    required: true
-  }
+    patients: {
+        type: Object,
+        required: true
+    }
 });
 
-const detelePatient = id =>{
-    if(confirm('¿Estás seguro de eliminar el paciente?')){
-      Inertia.delete(route('patients.destroy' , id))
+const detelePatient = id => {
+    if (confirm('¿Estás seguro de eliminar el paciente?')) {
+        Inertia.delete(route('patients.destroy', id))
     }
 }
 
 const searchQuery = ref('');
 const filteredPatients = computed(() => {
-  const query = searchQuery.value.toLowerCase().trim();
-  if (!query) {
-    return props.patients.data;
-  }
+    const query = searchQuery.value.toLowerCase().trim();
+    if (!query) {
+        return props.patients.data;
+    }
 
-  return props.patients.data.filter((patient) => {
-    return (
-      patient.name.toLowerCase().includes(query) ||
-      patient.lastname.toLowerCase().includes(query) ||
-      String(patient.identification).toLowerCase().includes(query) ||
-      String(patient.phone).toLowerCase().includes(query) ||
-      String(patient.birthdate).toLowerCase().includes(query) ||
-      patient.sex.toLowerCase().includes(query)
-    );
-  });
+    return props.patients.data.filter((patient) => {
+        return (
+            patient.name.toLowerCase().includes(query) ||
+            patient.lastname.toLowerCase().includes(query) ||
+            String(patient.identification).toLowerCase().includes(query) ||
+            String(patient.phone).toLowerCase().includes(query) ||
+            String(patient.birthdate).toLowerCase().includes(query) ||
+            patient.sex.toLowerCase().includes(query)
+        );
+    });
 });
 </script>
 
@@ -56,16 +56,15 @@ const filteredPatients = computed(() => {
 
             <div class="flex items-center mt-4 gap-x-3">
 
-                <Link
-                  :href="route('patients.create')"
+                <Link :href="route('patients.create')"
                     class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-gray-800 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-gray-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
 
-                    <span>Ingresar Paciente</span>
+                <span>Ingresar Paciente</span>
                 </Link>
             </div>
         </div>
@@ -101,15 +100,15 @@ const filteredPatients = computed(() => {
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
                     <tr v-for="patient in filteredPatients" :key="patient.id" class="hover:bg-gray-50">
                         <td class="px-6 py-4">
-                                {{ patient.name }}
+                            {{ patient.name }}
                         </td>
                         <td class="px-6 py-4">
-                                {{ patient.lastname }}
+                            {{ patient.lastname }}
                         </td>
                         <td class="px-6 py-4">{{ patient.identification }}</td>
                         <td class="px-6 py-4">
                             <div class="flex gap-2">
-                                    {{ patient.phone }}
+                                {{ patient.phone }}
                             </div>
                         </td>
                         <td class="px-6 py-4">{{ patient.birthdate }}</td>
@@ -130,6 +129,14 @@ const filteredPatients = computed(() => {
                                             d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
                                     </svg>
                                 </a>
+                                <a :href="route('patients.show', patient)">
+                                    <svg class="w-6 h-6" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none"  viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M10 3v4c0 .6-.4 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16c0 .6-.4 1-1 1H6a1 1 0 0 1-1-1V8c0-.4.1-.6.3-.8l4-4 .6-.2H18c.6 0 1 .4 1 1Z" />
+                                    </svg>
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -137,32 +144,36 @@ const filteredPatients = computed(() => {
             </table>
         </div>
         <div class="mt-6 sm:flex sm:items-center sm:justify-between ">
-        <div class="text-sm text-gray-700">
-            Página <span class="font-medium text-gray-700">{{ patients.current_page }} de {{ patients.last_page }}</span>
-        </div>
+            <div class="text-sm text-gray-700">
+                Página <span class="font-medium text-gray-700">{{ patients.current_page }} de {{ patients.last_page
+                }}</span>
+            </div>
 
-        <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
-            <a v-if="patients.current_page > 1" :href="patients.prev_page_url" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 hover:bg-gray-100">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                </svg>
+            <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
+                <a v-if="patients.current_page > 1" :href="patients.prev_page_url"
+                    class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                    </svg>
 
-                <span>
-                    Anterior
-                </span>
-            </a>
+                    <span>
+                        Anterior
+                    </span>
+                </a>
 
-            <a v-if="patients.current_page < patients.last_page" :href="patients.next_page_url" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 hover:bg-gray-100">
-                <span>
-                    Siguiente
-                </span>
+                <a v-if="patients.current_page < patients.last_page" :href="patients.next_page_url"
+                    class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 hover:bg-gray-100">
+                    <span>
+                        Siguiente
+                    </span>
 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                </svg>
-            </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                    </svg>
+                </a>
         </div>
     </div>
-    </AppLayout>
-</template>
+</AppLayout></template>
 

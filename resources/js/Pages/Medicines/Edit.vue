@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm, Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import MedicineForm from '@/Components/Medicines/Form.vue';
 const props = defineProps({
@@ -36,6 +36,7 @@ const form = useForm({
      
 <template>
     <AppLayout>
+        <Head title="Editar Medicina" />
         <template>
             <h1 class="fond-semibold text-xl text-gray-800 leading-tight">Editar Medicamento</h1>
             {{ form }}

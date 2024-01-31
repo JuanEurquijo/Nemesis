@@ -1,7 +1,7 @@
 <template>
-    <header class="flex items-center justify-between border-b-4 border-cyan-700 bg-white px-6 py-4">
+    <header class="flex items-center justify-between border-b-4 border-gray-800 bg-teal-900 px-6 py-4">
         <div class="flex items-center">
-            <button @click="$page.props.showingMobileMenu = !$page.props.showingMobileMenu" class="text-gray-500 focus:outline-none lg:hidden" aria-label="Navigation Menu Button">
+            <button @click="$page.props.showingMobileMenu = !$page.props.showingMobileMenu" class="text-white focus:outline-none lg:hidden" aria-label="Navigation Menu Button">
                 <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -11,7 +11,7 @@
         <div class="flex items-center">
             <dropdown>
                 <template #trigger>
-                    <button @click="dropdownOpen = ! dropdownOpen" class="relative block overflow-hidden text-base text-gray-500 dark:text-gray-300">
+                    <button @click="dropdownOpen = ! dropdownOpen" class="relative block overflow-hidden text-base text-white dark:text-white">
                         {{ $page.props.auth.user.name + ' ' + $page.props.auth.user.lastname + ' - ' + $page.props.auth.user.specialty}}
                     </button>
                 </template>

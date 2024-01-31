@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm, Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import PatientForm from '@/Components/Patients/Form.vue';
 import { format } from 'date-fns';
@@ -32,6 +32,7 @@ const submitForm = () => {
 
 <template>
     <AppLayout>
+        <Head title="Crear Paciente" />
         <template>
             <h1 class="fond-semibold text-xl text-gray-800 leading-tight">Ingresar paciente</h1>
         </template>
